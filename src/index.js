@@ -21,6 +21,10 @@ class Page extends React.Component {
     clearInterval(this.interval);
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    return this.state.users !== nextState.users;
+  }
+
   getAllUsers() {
     console.log("getAllUsers()");
     console.log("this state before call getAllUsers()", this.state);
