@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import axios from "axios";
+import Users from "./Users";
 
 class Page extends React.Component {
   constructor(props) {
@@ -16,15 +17,26 @@ class Page extends React.Component {
   }
 
   getAllUsers() {
-    console.log("getAllUsers");
-    axios
-      .get("http://www.mocky.io/v2/5ce46dc53100007ea5742d31")
-      .then(response =>
-        this.setState({ users: [...this.state.users, ...response.data] })
-      );
+    console.log("getAllUsers()");
+    console.log("this state before call getAllUsers()", this.state);
+    axios.get("https://jsonplaceholder.typicode.com/users").then(response =>
+      this.setState(function(prevState) {
+        return { users: [...prevState.users, ...response.data] };
+      })
+    );
+    console.log(this.state.users);
   }
   render() {
-    return <div>Hello</div>;
+    console.log("from render", this.state.users);
+    return (
+      <div>
+        {this.state.users.length === 0 ? (
+          <div>Loading...</div>
+        ) : (
+          <div>Users loaded</div>
+        )}
+      </div>
+    );
   }
 }
 
