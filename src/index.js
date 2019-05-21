@@ -6,7 +6,7 @@ import Users from "./Users";
 class Page extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { users: [] };
+    this.state = { users: [], count: 0 };
     this.getAllUsers = this.getAllUsers.bind(this);
   }
 
@@ -23,6 +23,11 @@ class Page extends React.Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     return this.state.users !== nextState.users;
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    this.setState({ count: prevState.count + 1 });
+    console.log(this.state.count);
   }
 
   getAllUsers() {
