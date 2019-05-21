@@ -10,16 +10,21 @@ class Page extends React.Component {
   }
 
   componentDidMount() {
+    console.log("component did mount");
     this.getAllUsers();
+    console.log("initial state", this.state);
   }
 
   getAllUsers() {
+    console.log("getAllUsers");
     axios
       .get("http://www.mocky.io/v2/5ce46dc53100007ea5742d31")
-      .then(response => console.log(response));
+      .then(response =>
+        this.setState({ users: [...this.state.users, ...response.data] })
+      );
   }
   render() {
-    return <div />;
+    return <div>Hello</div>;
   }
 }
 
