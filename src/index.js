@@ -14,7 +14,7 @@ class Page extends React.Component {
     console.log("component did mount");
     this.getAllUsers();
     console.log("initial state", this.state);
-    this.interval = setInterval(this.getAllUsers, 1000);
+    // this.interval = setInterval(this.getAllUsers, 1000);
   }
 
   componentWillUnmount() {
