@@ -69,12 +69,6 @@ class Pagination extends React.Component {
   }
 }
 
-Pagination.propTypes = {
-  data: React.PropTypes.array.isRequired,
-  pageSize: React.PropTypes.number.isRequired,
-  startingPage: React.PropTypes.number.isRequired
-};
-
 Pagination.defaultProps = {
   pageSize: 25,
   startingPage: 1
